@@ -89,6 +89,7 @@
                         <ul class="right hide-on-med-and-down">
                             <li><a href="#" class="tooltipped" id="search-trigger" data-position="bottom" data-delay="50" data-tooltip="Search"><i class="mdi-action-search"></i></a></li>
                             <li><a href="#cart" class="tooltipped modal-trigger" data-position="bottom" data-delay="50" data-tooltip="Cart"><i class="mdi-action-shopping-cart"></i></a></li>
+                            <li id="cartCount">' . count($cart). '</li>
                             <li><a href="#" class="dropdown-button" data-activates="dropdown1"><i class="mdi-action-account-circle"></i></a></li>
                         </ul>
                     </div>
@@ -140,6 +141,7 @@
                                                     });
                                                     $("#cart #close' . $i . '").on("click", function () {
                                                         $("#cart .item' . $i . ' .overlay").fadeIn();
+                                                        $("#cartCount").html($("#cartCount").html() - 1);
                                                         $.post("include/php/deleteCartItem.php", {"pid": ' . $cartItem['productid'] . '}, function(response) {
                                                             $("#cart #totalPrice").html(response);
                                                         });

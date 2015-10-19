@@ -219,12 +219,26 @@ header {
       padding-left: 15px;
       padding-top: 7px;
       ul {
+        position: relative;
         li {
           a {
             i {
               font-size: 25px;
             }
           }
+        }
+        #cartCount {
+          position: absolute;
+          min-width: 20px;
+          text-align: center;
+          top: 5px;
+          left: 85px;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 6px;
+          line-height: 1;
+          background-color: #F44336;
+          border-radius: 50%;
         }
       }
     }
