@@ -1,0 +1,40 @@
+-------------------------- eKart ---------------------------
+- Home
+-- header
+---- logo
+---- search
+---- cart
+---- login & signup
+-- carousel
+-- display of products in each category
+
+- Products page
+-- displays all products
+-- can click on category for all products in that category
+
+- Search result page
+-- overall search and search inside a category
+-- sort the results based on price(high to low and low to high), newest first, rating, out of stock exclude
+
+- Individual product page
+-- should be able to show all products with unique product id
+-- product images
+-- short description & rating
+-- add to cart and buy now buttons
+-- user reviews
+
+- User page
+-- profile
+-- addresses
+-- cart
+-- purchase history
+
+--- Categories ---
+Mobiles
+Laptops
+Clothing
+Beauty
+TVs
+Furnitures
+Books
+Movies

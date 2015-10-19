@@ -1,0 +1,5 @@
+ErrorDocument 400 /bfac/html_files/error_pages/400.html
+ErrorDocument 401 /bfac/html_files/error_pages/401.html
+ErrorDocument 403 /bfac/html_files/error_pages/403.html
+ErrorDocument 404 /bfac/html_files/error_pages/404.html
+ErrorDocument 500 /bfac/html_files/error_pages/500.html

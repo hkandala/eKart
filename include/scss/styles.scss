@@ -1,0 +1,315 @@
+@import 'default-styles.scss';
+@import 'materialize.scss';
+
+/*--------------------Site Styles--------------------------*/
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+#login {
+  max-height: 90%;
+  .mdi-navigation-close {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    font-size: 30px;
+    color: #009688;
+    cursor: pointer;
+    display: none;
+  }
+  h2 {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-size: 35px;
+    font-weight: 800;
+    color: #009688;
+    padding: 40px 0;
+  }
+  .login-form .input-field {
+    display: block;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+  }
+  input[type=submit] {
+    margin-top: 10px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  p {
+    margin-top: 15px;
+    margin-bottom: 35px;
+    font-size: 14px;
+    color: #212121;
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    span {
+      font-weight: 800;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .loadingButton {
+    position: relative;
+    width: 250px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    .preloader-wrapper {
+      display: none;
+      position: absolute;
+      top: 18px;
+      right: 13px;
+    }
+    .feedback {
+      color: #F44336;
+      margin-bottom: 0;
+    }
+  }
+  .progress {
+    margin: 195px 0;
+    display: none;
+  }
+  .signup-block {
+    padding-bottom: 40px;
+    overflow: hidden;
+    .mdi-navigation-arrow-back {
+      position: absolute;
+      font-size: 30px;
+      color: #009688;
+      cursor: pointer;
+    }
+    h2 {
+      font-size: 30px;
+      padding-top: 30px;
+      padding-bottom: 50px;
+    }
+    .input-field {
+      margin: 5px 25px;
+    }
+  }
+}
+.modal.modal-fixed-footer .modal-footer {
+  z-index: 50;
+}
+#cart {
+  h2 {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: #009688;
+    padding: 20px 0;
+  }
+  .emptyCart {
+    text-align: center;
+    margin-top: 110px;
+    font-size: 25px;
+    color: #757575;
+  }
+  .collection {
+    .collection-item {
+      position: relative;
+      padding: 20px;
+      .mdi-navigation-close {
+        z-index: 5;
+        position: absolute;
+        cursor: pointer;
+        font-size: 20px;
+        color: #009688;
+        top: 20px;
+        right: 20px;
+      }
+      .thumb {
+        height: 150px;
+        background: no-repeat center center;
+        background-size: contain;
+      }
+      .details {
+        padding-left: 25px;
+        padding-right: 40px;
+        h3 {
+          font-weight: 600;
+          color: #263238;
+        }
+        p {
+          font-size: 14px;
+          color: #263238;
+        }
+        p.qty {
+          margin-top: 20px;
+        }
+        input {
+          color: #263238;
+          height: 2rem;
+          text-align: center;
+          width: 50px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #263238;
+    opacity: 0.4;
+    z-index: 25;
+    p {
+      font-size: 25px;
+      font-weight: 600;
+      color: #EEEEEE;
+      text-align: center;
+      margin-top: 85px;
+    }
+  }
+  .card-panel {
+    overflow: hidden;
+    margin-bottom: 75px;
+    p {
+      margin-top: 7px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #009688;
+      float: left;
+    }
+  }
+}
+header {
+  nav {
+    z-index: 500;
+    position: fixed;
+    background-color: #1e88e5;
+    transition: top 0.4s;
+  }
+  nav.search {
+    top: -100px;
+  }
+  nav.original {
+    height: 80px;
+    top: 0;
+    .mdi-action-shopping-cart {
+      position: relative;
+    }
+    .nav-wrapper {
+      img {
+        position: relative;
+        top: -5px;
+        padding-left: 20px;
+        height: 30px;
+      }
+      .logo {
+        padding-left: 5px;
+        font-size: 25px;
+        span {
+          font-weight: 700;
+        }
+      }
+      padding-right: 15px;
+      padding-left: 15px;
+      padding-top: 7px;
+      ul {
+        li {
+          a {
+            i {
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .dropdown-content li > a {
+    font-size: 1rem;
+    padding: 0 1.5rem;
+    color: #009688;
+    i {
+      display: inline;
+      position: relative;
+      top: 4px;
+      padding-right: 7px;
+    }
+  }
+  .dropdown-content li > a.username {
+    padding: 1rem 1.5rem;
+    color: #263238;
+    cursor: default;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+main {
+  flex: 1 0 auto;
+  background-color: #f5f5f5;
+  #owl-demo {
+    .item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .owl-controls {
+      display: block;
+      position: absolute;
+      bottom: 15px;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+}
+footer.page-footer {
+  position: relative;
+  z-index: 50;
+  overflow: hidden;
+  margin-top: 0;
+  background-color: #1e88e5;
+  h5 {
+    line-height: 1.5;
+    font-size: 40px;
+    padding: 30px;
+  }
+  .footer-copyright {
+    width: 100%;
+    color: #EEEEEE;
+    .madeWith {
+      p {
+        text-align: center;
+        span {
+          padding-left: 2px;
+          padding-right: 2px;
+          color: #F44336;
+        }
+        a {
+          color: #EEEEEE;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+/*---------------------------------------------------------*/
+
+/*---------------------Media Queries-----------------------*/
+@media only screen and (max-width: 500px) {
+  #login {
+    width: 100%;
+    height: 100vh;
+    max-height: none;
+    top: 0 !important;
+    .mdi-navigation-close {
+      display: block;
+    }
+  }
+}
+/*---------------------------------------------------------*/

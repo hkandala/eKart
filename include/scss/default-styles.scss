@@ -1,0 +1,412 @@
+/*--------------Resetting Default Styles-------------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+	display: block;
+}
+audio, canvas, video {
+    display: inline-block;
+}
+html {
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+  	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+a {
+	background-color: transparent;
+}
+a:active, a:hover {
+	outline: 0;
+}
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+  	top: -0.5em;
+}
+sub {
+  	bottom: -0.25em;
+}
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+[hidden], template {
+    display: none;
+}
+code, kbd, pre, samp {
+    font-family: monospace, serif;
+    font-size: 1em;
+}
+figure {
+    margin: 0;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+img {
+    border: 0;
+}
+pre {
+    white-space: pre-wrap;
+}
+audio, canvas, img, svg, video {
+    vertical-align: middle;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: "";
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+button, input {
+    line-height: normal;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+legend {
+    border: 0;
+    padding: 0;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+input[type="checkbox"], input[type="radio"] {
+    padding: 0;
+}
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+mark {
+    background: #ff0;
+    color: #000;
+}
+small {
+    font-size: 80%;
+}
+dfn {
+    font-style: italic;
+}
+b, strong {
+    font-weight: bold;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+/*---------------------------------------------------------*/
+
+/*------------------Setting Border Box---------------------*/
+* {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+*:before, *:after {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+/*---------------------------------------------------------*/
+
+/*-----------------------Clearfix--------------------------*/
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+} 
+.clearfix {
+    display: inline-block;
+} 
+html[xmlns] .clearfix {
+    display: block;
+} 
+* html .clearfix {
+    height: 1%;
+}
+/*---------------------------------------------------------*/
+
+/*------------------Fluid Grid Layout*---------------------*/
+.container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.row {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+.col {
+	position: relative;
+	float: left;
+}
+.img-responsive {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+.col.one, .col.two, .col.three, .col.four, .col.five, .col.six, .col.seven, .col.eight, .col.nine, .col.ten, .col.eleven, .col.twelve {
+	width: 100%;
+}
+.col.pull-12, .col.pull-11, .col.pull-10, .col.pull-9, .col.pull-8, .col.pull-7, .col.pull-6, .col.pull-5, .col.pull-4, .col.pull-3, .col.pull-2, .col.pull-1 {
+	right: auto;
+}
+.col.push-12, .col.push-11, .col.push-10, .col.push-9, .col.push-8, .col.push-7, .col.push-6, .col.push-5, .col.push-4, .col.push-3, .col.push-2, .col.push-1 {
+	left: auto;
+}
+.col.offset-12, .col.offset-11, .col.offset-10, .col.offset-9, .col.offset-8, .col.offset-7, .col.offset-6, .col.offset-5, .col.offset-4, .col.offset-3, .col.offset-2, .col.offset-1 {
+	margin-left: 0;
+}
+@media (min-width: 768px) {
+	.col.twelve {
+		width: 100%;
+	}
+	.col.eleven {
+	  	width: 91.66666667%;
+	}
+	.col.ten {
+	  	width: 83.33333333%;
+	}
+	.col.nine {
+	  	width: 75%;
+	}
+	.col.eight {
+	  	width: 66.66666667%;
+	}
+	.col.seven {
+	  	width: 58.33333333%;
+	}
+	.col.six {
+	  	width: 50%;
+	}
+	.col.five {
+	  	width: 41.66666667%;
+	}
+	.col.four {
+	  	width: 33.33333333%;
+	}
+	.col.three {
+	  	width: 25%;
+	}
+	.col.two {
+	  	width: 16.66666667%;
+	}
+	.col.one {
+	  	width: 8.33333333%;
+	}
+	.col.pull-12 {
+	  	right: 100%;
+	}
+	.col.pull-11 {
+	  	right: 91.66666667%;
+	}
+	.col.pull-10 {
+	  	right: 83.33333333%;
+	}
+	.col.pull-9 {
+	  	right: 75%;
+	}
+	.col.pull-8 {
+	  	right: 66.66666667%;
+	}
+	.col.pull-7 {
+	  	right: 58.33333333%;
+	}
+	.col.pull-6 {
+	 	right: 50%;
+	}
+	.col.pull-5 {
+	  	right: 41.66666667%;
+	}
+	.col.pull-4 {
+	  	right: 33.33333333%;
+	}
+	.col.pull-3 {
+	  	right: 25%;
+	}
+	.col.pull-2 {
+	  	right: 16.66666667%;
+	}
+	.col.pull-1 {
+	  	right: 8.33333333%;
+	}
+	.col.push-12 {
+	  	left: 100%;
+	}
+	.col.push-11 {
+	  	left: 91.66666667%;
+	}
+	.col.push-10 {
+	  	left: 83.33333333%;
+	}
+	.col.push-9 {
+	  	left: 75%;
+	}
+	.col.push-8 {
+	  	left: 66.66666667%;
+	}
+	.col.push-7 {
+	  	left: 58.33333333%;
+	}
+	.col.push-6 {
+	  	left: 50%;
+	}
+	.col.push-5 {
+	  	left: 41.66666667%;
+	}
+	.col.push-4 {
+	  	left: 33.33333333%;
+	}
+	.col.push-3 {
+	  	left: 25%;
+	}
+	.col.push-2 {
+	  	left: 16.66666667%;
+	}
+	.col.push-1 {
+	  	left: 8.33333333%;
+	}
+	.col.offset-12 {
+	  	margin-left: 100%;
+	}
+	.col.offset-11 {
+	  	margin-left: 91.66666667%;
+	}
+	.col.offset-10 {
+	  	margin-left: 83.33333333%;
+	}
+	.col.offset-9 {
+	  	margin-left: 75%;
+	}
+	.col.offset-8 {
+	  	margin-left: 66.66666667%;
+	}
+	.col.offset-7 {
+	  	margin-left: 58.33333333%;
+	}
+	.col.offset-6 {
+	  	margin-left: 50%;
+	}
+	.col.offset-5 {
+	  	margin-left: 41.66666667%;
+	}
+	.col.offset-4 {
+	  	margin-left: 33.33333333%;
+	}
+	.col.offset-3 {
+	  	margin-left: 25%;
+	}
+	.col.offset-2 {
+	  	margin-left: 16.66666667%;
+	}
+	.col.offset-1 {
+	  	margin-left: 8.33333333%;
+	}	
+}
+/*---------------------------------------------------------*/
+
+/*---------------------Print Styles------------------------*/
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a, a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+        content: "";
+    }
+	p a {
+		word-wrap: break-word;
+	}
+    pre, blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    thead {
+        display: table-header-group;
+    }
+    tr, img {
+        page-break-inside: avoid;
+    }
+	select {
+		background: #fff !important;
+	}
+    img {
+        max-width: 100% !important;
+    }
+    @page {
+        margin: 0.5cm;
+    }
+	@page :left {
+		margin: 0.5cm;
+	}
+	@page :right {
+		margin: 0.8cm;
+	}
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2, h3 {
+        page-break-after: avoid;
+    }
+}
+/*---------------------------------------------------------*/
