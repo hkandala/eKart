@@ -27,6 +27,18 @@ $(document).ready(function () {
         paginationSpeed : 400,
         singleItem:true
     });
+    $(".products").owlCarousel({
+        items : 5,
+        pagination: false
+    }).each(function() {
+        var owl = $(this);
+        $(this).parent().find(".next-btn").click(function() {
+            owl.trigger("owl.next");
+        });
+        $(this).parent().find(".prev-btn").click(function() {
+            owl.trigger("owl.prev");
+        });
+    });
     $("#login .modal-content .mdi-navigation-close").click(function () {
         $("#login").closeModal();
     });
@@ -96,7 +108,7 @@ function loginValidate () {
         $.post('include/php/loginCheck.php', loginObj, function(response) {
             if(response == 'Logged In') {
                 $('.login-form .feedback').html(response);
-                window.location = 'index.php';
+                window.location = window.location;
             } else if (response != '') {
                 $(".login-form .loadingButton .preloader-wrapper").fadeOut('fast');
                 $('.login-form .feedback').html(response);

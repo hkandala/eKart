@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once 'include/php/Db.class.php';
+    require_once 'include/php/Util.class.php';
     $db = new DB();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -32,6 +33,42 @@
         <div class="item"><img src="img/slide3.jpg" alt="Slide"></div>
     </div>
 
+    <div class="all-products">
+        <?php
+            $products = Util::getAllProducts();
+            $i = 0;
+            foreach($products as $product) {
+                echo '
+                    <div class="category cat-' . $i . '">
+                        <a href="products.php?catid=' . $product['catid'] . '" class="cat-title">' . $product['catname'] . '</a>
+                        <div id="owl-demo-' . $i . '" class="products owl-carousel">';
+                            foreach ($product as $productItem) {
+                                if(is_array($productItem)) {
+                                    if ($productItem['instock']) {
+                                        echo '
+                                            <div class="item card-panel">
+                                                <div class="image" style="background-image: url(\'' . Util::getImg($productItem['id']) . '\')"></div>
+                                                <a href="item.php?id=' . $productItem['id'] . '" class="title">' . $productItem['name'] . '</a>
+                                                <div class="price">Rs.' . $productItem['price'] . '</div>
+                                            </div>
+                                        ';
+                                    }
+                                }
+                            }
+                echo '
+                        </div>
+                        <div class="next-btn"><i class="mdi-navigation-chevron-right"></i></div>
+                        <div class="prev-btn"><i class="mdi-navigation-chevron-left"></i></div>
+                    </div>
+                ';
+                $i++;
+                if($i == 4) {
+                    break;
+                }
+            }
+        ?>
+        <a href="products.php" class="btn-large blue-grey see-all">Browse through all of our products</a>
+    </div>
 
     <?php
         require_once 'include/php/footer.php';

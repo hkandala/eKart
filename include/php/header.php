@@ -125,9 +125,9 @@
                                         <li class="collection-item row item' . $i . '">
                                             <div class="overlay"><p>REMOVED</p></div>
                                             <i class="mdi-navigation-close" id="close' . $i . '"></i>
-                                            <div class="thumb col s3" style="background-image: url(\'' . $img . '\')"></div>
+                                            <div class="thumb col s3" style="background-image: url(\'' . $img . '\');"></div>
                                             <div class="details col s9">
-                                                <h3>' . $cartItem['name'] . '</h3>
+                                                <a href="item.php?id=' . $cartItem['productid'] . '">' . $cartItem['name'] . '</a>
                                                 <p>Price: Rs.' . $cartItem['price'] . '</p>
                                                 <p class="qty">Quantity: </p>
                                                 <input id="cartItem' . $i . '" type="text" value="' . $cartItem['qty'] . '"/>
