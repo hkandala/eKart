@@ -70,31 +70,143 @@
         $product = Util::getAllProducts(isset($_REQUEST['catid']) ? $_REQUEST['catid'] : Util::getCategoryStr(), isset($_REQUEST['q']) ? $_REQUEST['q'] : null, isset($_REQUEST['p']) ? $_REQUEST['p'] : null, isset($_REQUEST['rt']) ? $_REQUEST['rt'] : null, isset($_REQUEST['ra']) ? $_REQUEST['ra'] : null, isset($_REQUEST['os']) ? $_REQUEST['os'] : null);
         if($product != null) {
             echo '
+                <a href="#" class="cat-title common">';
+                if(isset($_REQUEST['q'])) {
+                    echo '
+                        Showing search results for \'' . $_REQUEST['q'] . '\'
+                        <span>' . $product['count'] . ' result';
+                    if($product['count'] == 1) {
+                        echo ' found</span>';
+                    } else {
+                        echo 's found</span>';
+                    }
+                } else {
+                    if(isset($product['catname'])) {
+                        echo $product['catname'];
+                    } else {
+                        echo 'Refined Results';
+                    }
+                }
+            echo'
+                </a>
                 <div class="row">
                     <div class="sidebar col s2">
-                        <h4>Refine</h4>
+                        <div class="card-panel">
+                            <h4>Refine</h4>
+                            <form id="refineForm" action="products.php" method="get">
+                                <p>Categories</p>
+                                <div class="cat-sub-form">';
+                                    $categories = Util::getAllCategories();
+                                    foreach($categories as $category) {
+                                        echo '
+                                            <div>
+                                                <input type="checkbox" class="filled-in" id="cat-';
+                                                echo $category['id'] . '" ';
+                                                if(Util::isCategoryChecked($category['id'])) {
+                                                    echo 'checked="checked"';
+                                                }
+                                        echo '
+                                                 />
+                                                <label for="cat-' . $category['id'] . '">' . $category['name'] . '</label>
+                                            </div>
+                                        ';
+                                    }
+                            echo '
+                                </div>
+                                <p>Price</p>
+                                <div>
+                                    <input type="checkbox" class="filled-in" id="p-1" ';
+                                    if(isset($_REQUEST['p']) && $_REQUEST['p']==1) {
+                                        echo 'checked="checked"';
+                                    }
+                            echo ' />
+                                    <label for="p-1">High to Low</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="filled-in" id="p-2" ';
+                                    if(isset($_REQUEST['p']) && $_REQUEST['p']!=1) {
+                                        echo 'checked="checked"';
+                                    }
+                            echo ' />
+                                    <label for="p-2">Low to High</label>
+                                </div>
+                                <p>Rating</p>
+                                <div>
+                                    <input type="checkbox" class="filled-in" id="rt-1" ';
+                                    if(isset($_REQUEST['rt']) && $_REQUEST['rt']==1) {
+                                        echo 'checked="checked"';
+                                    }
+                            echo ' />
+                                    <label for="rt-1">High to Low</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="filled-in" id="rt-2" ';
+                                    if(isset($_REQUEST['rt']) && $_REQUEST['rt']!=1) {
+                                        echo 'checked="checked"';
+                                    }
+                            echo ' />
+                                    <label for="rt-2">Low to High</label>
+                                </div>
+                                <p>Time</p>
+                                <div>
+                                    <input type="checkbox" class="filled-in" id="ra-1" ';
+                                    if(isset($_REQUEST['ra']) && $_REQUEST['ra']==1) {
+                                        echo 'checked="checked"';
+                                    }
+                            echo ' />
+                                    <label for="ra-1">Newest First</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="filled-in" id="ra-2" ';
+                                    if(isset($_REQUEST['ra']) && $_REQUEST['ra']!=1) {
+                                        echo 'checked="checked"';
+                                    }
+                            echo ' />
+                                    <label for="ra-2">Oldest First</label>
+                                </div>
+                                <div class="os-box">
+                                    <input type="checkbox" class="filled-in" id="os" ';
+                                    if(isset($_REQUEST['os']) && $_REQUEST['os']==1) {
+                                        echo 'checked="checked"';
+                                    }
+                            echo ' />
+                                    <label for="os">Include out of stock products</label>
+                                </div>
+                                <input type="hidden" id="ip-catid" name="catid" value="';
+                                if(isset($_REQUEST['catid'])) {
+                                    echo $_REQUEST['catid'];
+                                }
+                        echo '">
+                                <input type="hidden" id="ip-p" name="p" value="';
+                                if(isset($_REQUEST['p'])) {
+                                    echo $_REQUEST['p'];
+                                }
+                        echo '">
+                                <input type="hidden" id="ip-rt" name="rt" value="';
+                                if(isset($_REQUEST['rt'])) {
+                                    echo $_REQUEST['rt'];
+                                }
+                        echo '">
+                                <input type="hidden" id="ip-ra" name="ra" value="';
+                                if(isset($_REQUEST['ra'])) {
+                                    echo $_REQUEST['ra'];
+                                }
+                        echo '">
+                                <input type="hidden" id="ip-os" name="os" value="';
+                                if(isset($_REQUEST['os'])) {
+                                    echo $_REQUEST['os'];
+                                }
+                        echo '">
+                                <input type="hidden" id="ip-q" name="q" value="';
+                                if(isset($_REQUEST['q'])) {
+                                    echo $_REQUEST['q'];
+                                }
+                        echo '">
+                            </form>
+                        </div>
                     </div>
                     <div class="all-products products-page col s10">
                         <div class="category products-list-page">
-                            <a href="#" class="cat-title">';
-                            if(isset($_REQUEST['q'])) {
-                                echo '
-                                    Showing search results for \'' . $_REQUEST['q'] . '\'
-                                    <span>' . $product['count'] . ' result';
-                                    if($product['count'] == 1) {
-                                        echo ' found</span>';
-                                    } else {
-                                        echo 's found</span>';
-                                    }
-                            } else {
-                                if(isset($product['catname'])) {
-                                    echo $product['catname'];
-                                } else {
-                                    echo 'Refined Results';
-                                }
-                            }
-                        echo'
-                            </a>
                             <div class="products-list row">';
                             $i = 0;
                             foreach ($product as $productItem) {

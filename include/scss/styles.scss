@@ -356,6 +356,26 @@ main {
       margin: 20px auto;
     }
   }
+  .cat-title.common {
+    display: block;
+    font-size: 23px;
+    font-weight: 600;
+    color: #009688;
+    padding-bottom: 15px;
+    margin: 115px 30px 20px;
+    border-bottom: 1px solid #2196f3;
+    span {
+      float: right;
+      font-weight: 400;
+      font-size: 16px;
+      color: #607d8b;
+      margin-top: 5px;
+      margin-right: 25px;
+    }
+    & ~ .row .products-page {
+      margin-top: 0;
+    }
+  }
   .all-products.products-page {
     margin-top: 70px;
     .os-overlay {
@@ -374,20 +394,10 @@ main {
   }
   .products-list-page {
     overflow: hidden;
-    padding-top: 20px;
+    margin: 0 !important;
     .item {
       margin: 0 !important;
       background-color: #F5F5F5 !important;
-    }
-    .cat-title {
-      span {
-        float: right;
-        font-weight: 400;
-        font-size: 16px;
-        color: #607d8b;
-        margin-top: 5px;
-        margin-right: 25px;
-      }
     }
   }
   .no-products {
@@ -398,13 +408,34 @@ main {
     font-weight: 600;
   }
   .sidebar {
-    margin-top: 80px;
-    padding: 20px !important;
+    &.col {
+      padding-right: 0;
+      padding-left: 1.5rem;
+    }
     h4 {
-      margin-top: 50px;
+      margin-bottom: 25px;
       font-weight: 600;
       font-size: 20px;
       color: #009688;
+    }
+    p {
+      font-weight: 600;
+      margin: 15px 0;
+      color: #607d8b;
+    }
+    .card-panel {
+      margin-top: 0.5rem;
+      div {
+        display: block;
+        margin: 5px 0 5px 10px;
+        label {
+          color: #78909c;
+        }
+      }
+    }
+    .os-box {
+      margin-top: 30px !important;
+      margin-bottom: 10px !important;
     }
   }
 }
@@ -418,6 +449,9 @@ footer.page-footer {
     line-height: 1.5;
     font-size: 40px;
     padding: 30px;
+    span {
+      font-weight: 600;
+    }
   }
   .footer-copyright {
     width: 100%;

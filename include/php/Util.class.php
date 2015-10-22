@@ -37,8 +37,13 @@
             return $result;
         }
 
+        public static function getAllCategories() {
+            $results = $GLOBALS['db']->query('SELECT * FROM categories');
+            return $results;
+        }
+
         public static function getCategoryStr() {
-            $results = $GLOBALS['db']->query('SELECT id FROM categories');
+            $results = Util::getAllCategories();
             $cat = array();
             foreach($results as $result) {
                 $cat[] = $result['id'];
@@ -102,5 +107,16 @@
             }
 
             return $products;
+        }
+
+        public static function isCategoryChecked($id) {
+            $allCheckedCat = explode("|", isset($_REQUEST['catid']) ? $_REQUEST['catid'] : null);
+            foreach($allCheckedCat as $cat) {
+                if($cat == $id) {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }

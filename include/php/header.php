@@ -159,9 +159,9 @@
                                     <a href="checkout.php" class="btn right">Buy Now</a>
                                 </div>
                                 <script type="text/javascript">
-                                    window.onload = function () {
+                                    function cartInit() {
                             ';
-                                        while($i>=0) {
+                                        while($i>0) {
                                             $i--;
                                             echo 'cartLoad' . $i . '();';
                                         }

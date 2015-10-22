@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 center-align">
-                <h5 class="white-text">eKart</h5>
+                <h5 class="white-text">e<span>Kart</span></h5>
             </div>
         </div>
     </div>

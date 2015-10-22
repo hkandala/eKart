@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2015 at 10:07 PM
+-- Generation Time: Oct 22, 2015 at 06:17 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -163,8 +163,20 @@ CREATE TABLE IF NOT EXISTS `review` (
   `userid` int(10) NOT NULL,
   `productid` int(10) NOT NULL,
   `rating` int(11) NOT NULL,
-  `comment` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `comment` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`id`, `userid`, `productid`, `rating`, `comment`) VALUES
+(3, 1, 4, 4, 'Very fast delivery..Love it'),
+(2, 1, 8, 5, 'Excellent Product'),
+(4, 1, 19, 4, 'Love Apple products.'),
+(1, 1, 26, 3, 'Good product'),
+(5, 2, 8, 4, 'Love this phone!!'),
+(6, 3, 8, 3, 'Not bad. doesn''t worth for price\r\n');
 
 -- --------------------------------------------------------
 
@@ -192,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(100) NOT NULL,
   `mobile` bigint(10) DEFAULT NULL,
   `dob` date DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -243,7 +255,7 @@ ALTER TABLE `purchase`
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
-  ADD PRIMARY KEY (`id`), ADD KEY `userid` (`userid`), ADD KEY `productid` (`productid`);
+  ADD PRIMARY KEY (`userid`,`productid`), ADD UNIQUE KEY `id` (`id`), ADD KEY `userid` (`userid`), ADD KEY `productid` (`productid`);
 
 --
 -- Indexes for table `solditems`
@@ -280,12 +292,12 @@ ALTER TABLE `purchase`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
