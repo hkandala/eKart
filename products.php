@@ -2,6 +2,7 @@
     session_start();
     require_once 'include/php/Db.class.php';
     require_once 'include/php/Util.class.php';
+    require_once 'include/php/Product.class.php';
     $db = new DB();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,7 +31,7 @@
 ?>
         <div class="all-products products-page">
             <?php
-                $products = Util::getAllProducts();
+                $products = Product::getAllProducts();
                 $i = 0;
                 foreach ($products as $product) {
                     echo '
@@ -39,9 +40,10 @@
                             <div id="owl-demo-' . $i . '" class="products owl-carousel">';
                             foreach ($product as $productItem) {
                                 if (is_array($productItem)) {
+                                    $product = new Product($productItem['id']);
                                     echo '
                                         <div class="item card-panel">
-                                            <div class="image" style="background-image: url(\'' . Util::getImg($productItem['id']) . '\')">';
+                                            <div class="image" style="background-image: url(\'' . $product->getImg() . '\')">';
                                             if(!$productItem['instock']) {
                                                 echo '
                                                     <div class="os-overlay z-depth-1">OUT OF STOCK</div>
@@ -67,7 +69,7 @@
         </div>
 <?php
     } else {
-        $product = Util::getAllProducts(isset($_REQUEST['catid']) ? $_REQUEST['catid'] : Util::getCategoryStr(), isset($_REQUEST['q']) ? $_REQUEST['q'] : null, isset($_REQUEST['p']) ? $_REQUEST['p'] : null, isset($_REQUEST['rt']) ? $_REQUEST['rt'] : null, isset($_REQUEST['ra']) ? $_REQUEST['ra'] : null, isset($_REQUEST['os']) ? $_REQUEST['os'] : null);
+        $product = Product::getAllProducts(isset($_REQUEST['catid']) ? $_REQUEST['catid'] : Util::getCategoryStr(), isset($_REQUEST['q']) ? $_REQUEST['q'] : null, isset($_REQUEST['p']) ? $_REQUEST['p'] : null, isset($_REQUEST['rt']) ? $_REQUEST['rt'] : null, isset($_REQUEST['ra']) ? $_REQUEST['ra'] : null, isset($_REQUEST['os']) ? $_REQUEST['os'] : null);
         if($product != null) {
             echo '
                 <a href="#" class="cat-title common">';
@@ -211,10 +213,11 @@
                             $i = 0;
                             foreach ($product as $productItem) {
                                 if (is_array($productItem)) {
+                                    $product = new Product($productItem['id']);
                                     echo '
                                         <div class="item col s3">
                                             <div class="padding-box card-panel">
-                                                <div class="image" style="background-image: url(\'' . Util::getImg($productItem['id']) . '\')">';
+                                                <div class="image" style="background-image: url(\'' . $product->getImg() . '\')">';
                                                 if(!$productItem['instock']) {
                                                     echo '
                                                          <div class="os-overlay z-depth-1">OUT OF STOCK</div>
