@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once 'include/php/Db.class.php';
-    require_once 'include/php/Util.class.php';
+    require_once 'include/php/Product.class.php';
     $db = new DB();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -35,7 +35,7 @@
 
     <div class="all-products">
         <?php
-            $products = Util::getAllProducts();
+            $products = Product::getAllProducts();
             $i = 0;
             foreach($products as $product) {
                 echo '
@@ -45,9 +45,10 @@
                             foreach ($product as $productItem) {
                                 if(is_array($productItem)) {
                                     if ($productItem['instock']) {
+                                        $product = new Product($productItem['id']);
                                         echo '
                                             <div class="item card-panel">
-                                                <div class="image" style="background-image: url(\'' . Util::getImg($productItem['id']) . '\')"></div>
+                                                <div class="image" style="background-image: url(\'' . $product->getImg() . '\')"></div>
                                                 <a href="item.php?id=' . $productItem['id'] . '" class="title">' . $productItem['name'] . '</a>
                                                 <div class="price">Rs.' . $productItem['price'] . '</div>
                                             </div>

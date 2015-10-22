@@ -1,6 +1,6 @@
 <?php
     require_once dirname(__FILE__) . '/User.class.php';
-    require_once dirname(__FILE__) . '/Util.class.php';
+    require_once dirname(__FILE__) . '/Product.class.php';
 
     if(isset($_SESSION['user'])) {
         $userId = $_SESSION['user'];
@@ -120,7 +120,8 @@
                                 <ul class="collection">';
                                 $i = 0;
                                 foreach($cart as $cartItem) {
-                                    $img = Util::getImg($cartItem['productid']);
+                                    $product = new Product($cartItem['productid']);
+                                    $img = $product->getImg();
                                     echo '
                                         <li class="collection-item row item' . $i . '">
                                             <div class="overlay"><p>REMOVED</p></div>
