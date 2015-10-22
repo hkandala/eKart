@@ -4,8 +4,7 @@
 
     if(isset($_SESSION['user'])) {
         $userId = $_SESSION['user'];
-        $user = new User();
-        $user->loadUser($userId);
+        $user = new User($userId);
     }
 
     if(!isset($_SESSION['user'])) {

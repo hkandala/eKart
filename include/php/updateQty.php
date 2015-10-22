@@ -6,18 +6,20 @@
     session_start();
     if(isset($_SESSION['user'])) {
         $userId = $_SESSION['user'];
-        $user = new User();
-        $user->loadUser($userId);
+        $user = new User($userId);
 
         if(isset($_REQUEST['qty']) && $_REQUEST['pid']) {
             $qty = $_REQUEST['qty'];
             $pid = $_REQUEST['pid'];
-            $result = $db->query('UPDATE cart SET qty="' . $qty . '" WHERE userid="' . $user->id . '" AND productid="' . $pid . '"');
-            echo $user->totalCartPrice();
+            if($user->updateCartQuantity($pid, $qty)) {
+                echo $user->totalCartPrice();
+            } else {
+                echo 0;
+            }
         } else {
             echo 0;
         }
     } else {
-        echo '0';
+        echo 0;
         exit();
     }
