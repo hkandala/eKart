@@ -182,6 +182,7 @@ function refineSubmit() {
     var rt = $(".sidebar #ip-rt");
     var ra = $(".sidebar #ip-ra");
     var os = $(".sidebar #ip-os");
+    var q = $(".sidebar #ip-q");
 
     var $catStr = '';
     $(".cat-sub-form").find("input").each(function() {
@@ -225,6 +226,10 @@ function refineSubmit() {
         os.val(1);
     } else {
         os.remove();
+    }
+
+    if(!q.val()) {
+        q.remove();
     }
 }
 /*-----------------------------------------------------------*/
