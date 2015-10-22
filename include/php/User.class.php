@@ -7,6 +7,7 @@
         public $fname;
         public $lname;
         public $email;
+        public $password;
         public $mobile;
         public $dob;
 
@@ -28,6 +29,7 @@
                     $this->fname = $result2[0]['fname'];
                     $this->lname = $result2[0]['lname'];
                     $this->email = $result2[0]['email'];
+                    $this->password = $result2[0]['password'];
                     $this->mobile = $result2[0]['mobile'];
                     $this->dob = $result2[0]['dob'];
 
@@ -47,6 +49,7 @@
                 $this->fname = $result[0]['fname'];
                 $this->lname = $result[0]['lname'];
                 $this->email = $result[0]['email'];
+                $this->password = $result[0]['password'];
                 $this->mobile = $result[0]['mobile'];
                 $this->dob = $result[0]['dob'];
 
@@ -63,24 +66,9 @@
                 $this->fname = $result[0]['fname'];
                 $this->lname = $result[0]['lname'];
                 $this->email = $result[0]['email'];
+                $this->password = $result[0]['password'];
                 $this->mobile = $result[0]['mobile'];
                 $this->dob = $result[0]['dob'];
-
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public function deleteUser() {
-            $result = $GLOBALS['db']->query('DELETE FROM users WHERE id="' . $this->id . '"');
-            if($result > 0) {
-                $this->id = null;
-                $this->fname = null;
-                $this->lname = null;
-                $this->email = null;
-                $this->mobile = null;
-                $this->dob = null;
 
                 return true;
             } else {
@@ -119,6 +107,7 @@
                 if($result > 0) {
                     $fname!=null ? $this->fname = $fname : null;
                     $lname!=null ? $this->lname = $lname : null;
+                    $password!=null ? $this->password = $password : null;
                     $mobile!=null ? $this->mobile = $mobile : null;
                     $dob!=null ? $this->dob = $dob : null;
                     return true;
@@ -143,5 +132,33 @@
             }
 
             return $total;
+        }
+
+        public function addReview($id) {
+
+        }
+
+        public function addToCart($id) {
+
+        }
+
+        public function buyCart() {
+
+        }
+
+        public function addAddress() {
+
+        }
+
+        public function updateAddress() {
+
+        }
+
+        public function deleteAddress() {
+
+        }
+
+        public function getOrderHistory() {
+            
         }
     }
