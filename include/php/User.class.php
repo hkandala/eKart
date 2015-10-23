@@ -369,18 +369,85 @@
         }
 
         public function loadAddress() {
-
+            $GLOBALS['db']->bind('id', $this->id);
+            $result = $GLOBALS['db']->query('SELECT * FROM address WHERE userid=:id');
+            return $result;
         }
 
-        public function addAddress() {
+        public function addAddress($name, $mobile, $address) {
+            $GLOBALS['db']->bindMore(array(
+                'userid' => $this->id,
+                'name' => $name
+            ));
+            $check = $GLOBALS['db']->query('SELECT id FROM address WHERE userid=:userid AND name=:name');
 
+            if(count($check) == 0) {
+                $GLOBALS['db']->bindMore(array(
+                    'userid' => $this->id,
+                    'name' => $name,
+                    'mobile' => $mobile,
+                    'address' => $address
+                ));
+                $result = $GLOBALS['db']->query('INSERT INTO address(userid, name, mobile, address) VALUES(:userid, :name, :mobile, :address)');
+
+                if($result > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
         }
 
-        public function updateAddress() {
+        public function updateAddress($id, $name, $mobile, $address) {
+            $GLOBALS['db']->bindMore(array(
+                'userid' => $this->id,
+                'id' => $id
+            ));
+            $check = $GLOBALS['db']->query('SELECT * FROM address WHERE userid=:userid AND id=:id');
 
+            if(count($check) > 0) {
+                $GLOBALS['db']->bindMore(array(
+                    'userid' => $this->id,
+                    'name' => $name
+                ));
+                $check2 = $GLOBALS['db']->query('SELECT id FROM address WHERE userid=:userid AND name=:name');
+
+                if(count($check2) == 0 || $check2[0]['id'] == $id) {
+                    $GLOBALS['db']->bindMore(array(
+                        'userid' => $this->id,
+                        'id' => $id,
+                        'name' => $name,
+                        'mobile' => $mobile,
+                        'address' => $address
+                    ));
+                    $result = $GLOBALS['db']->query('UPDATE address SET name=:name, mobile=:mobile, address=:address WHERE userid=:userid AND id=:id');
+
+                    if($result > 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
         }
 
-        public function deleteAddress() {
+        public function deleteAddress($id) {
+            $GLOBALS['db']->bindMore(array(
+                'userid' => $this->id,
+                'id' => $id
+            ));
+            $result = $GLOBALS['db']->query('DELETE FROM address WHERE userid=:userid AND id=:id');
 
+            if($result > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
