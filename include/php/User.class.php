@@ -148,6 +148,23 @@
             }
         }
 
+        public function loadReview($id) {
+            if($this->id!=null) {
+                $GLOBALS['db']->bindMore(array(
+                    'userid'    => $this->id,
+                    'productid' => $id,
+                ));
+                $result = $GLOBALS['db']->query('SELECT * FROM review WHERE userid=:userid AND productid=:productid');
+                if (count($result) != 0) {
+                    return $result[0];
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
         public function addReview($id, $rating, $comment) {
             if($this->id!=null) {
                 $GLOBALS['db']->bindMore(array(

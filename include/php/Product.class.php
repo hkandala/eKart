@@ -13,13 +13,15 @@
 
         public function __construct($id) {
             $result = $GLOBALS['db']->query('SELECT * FROM products WHERE id="' . $id . '"');
-            $this->id = $result[0]['id'];
-            $this->catid = $result[0]['catid'];
-            $this->name = $result[0]['name'];
-            $this->price = $result[0]['price'];
-            $this->instock = $result[0]['instock'];
-            $this->description = $result[0]['description'];
-            $this->timestamp = $result[0]['timestamp'];
+            if($result != null) {
+                $this->id = $result[0]['id'];
+                $this->catid = $result[0]['catid'];
+                $this->name = $result[0]['name'];
+                $this->price = $result[0]['price'];
+                $this->instock = $result[0]['instock'];
+                $this->description = $result[0]['description'];
+                $this->timestamp = $result[0]['timestamp'];
+            }
         }
 
         public function getImg() {

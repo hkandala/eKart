@@ -42,6 +42,24 @@ $(document).ready(function () {
             owl.trigger("owl.prev");
         });
     });
+    $(".product-images").owlCarousel({
+        items : 1,
+        pagination: false
+    }).each(function() {
+        var owl = $(this);
+        $(this).parent().find(".next-btn").click(function() {
+            owl.trigger("owl.next");
+        });
+        $(this).parent().find(".prev-btn").click(function() {
+            owl.trigger("owl.prev");
+        });
+    });
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    $("#product-review").submit(function() {
+       return $("#product-review-rating").val() != null;
+    });
     $("#login .modal-content .mdi-navigation-close").click(function () {
         $("#login").closeModal();
     });
